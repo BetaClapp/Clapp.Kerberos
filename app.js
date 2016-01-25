@@ -27,7 +27,7 @@ console.log('\nLibs imported');
 // =======================
 // configuration =========
 // =======================
-var port = 3000;
+var port = 5000;
 
 var isOnline = true;
 
@@ -48,4 +48,4 @@ console.log('modules initialized');
 // listening app =========
 // =======================
 io.listen(app.listen(port));
-console.log('Listening on port 3000');
+console.log('Listening on port ' + port);
