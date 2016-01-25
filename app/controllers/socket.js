@@ -34,7 +34,7 @@ function initialize(io, globals){
 		Socket Intervals
 		*/
 		/// Emit every 5 seconds cranes
-		setInterval(raspberryHeartbeat, 5000);
+		//setInterval(raspberryHeartbeat, 5000);
 	
 		/* 
 		================
