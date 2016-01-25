@@ -27,7 +27,7 @@ console.log('\nLibs imported');
 // =======================
 // configuration =========
 // =======================
-var port = 5000;
+var port = 3000;
 
 var isOnline = true;
 
