@@ -1,7 +1,7 @@
  // Clapp.Kerberos
  // v. 0.1.0
 
-console.log('== TuGrua.co Backend ==');
+console.log('\n\t\t\t\t== Clapp.Kerberos ==');
 
 // =======================
 // libraries =========
