@@ -12,8 +12,8 @@ function initialize(io, globals){
 		*/
 		
 		/// Emit all cranes
-		function getCranes(){			
-			socket.emit('Backend.Message', {Command : 'CurrentPositionCranes', Values : globals.Cranes});
+		function sendKerberosMessage(){			
+			socket.emit('Clapp.Kerberos.Message', {Command : 'KerberosCommand', Values : 1});
 		}
 		
 		/* 
@@ -21,7 +21,7 @@ function initialize(io, globals){
 		Socket Intervals
 		*/
 		/// Emit every 5 seconds cranes
-		setInterval(getCranes, 5000);
+		setInterval(sendKerberosMessage, 5000);
 	
 		/* 
 		================
