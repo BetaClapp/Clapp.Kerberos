@@ -4,16 +4,29 @@ function initialize(io, globals){
 		console.log('-' + socket.id);
 	
 		/// Welcome to the new client
-		socket.emit('Welcome', {SocketId : socket.id});
+		socket.emit('Welcome', {Message: 'Welcome to Clapp.Kerberos', SocketId : socket.id});
+		
+		/*
+		================
+		socket events
+		*/
+		socket.on('ImConnected', function(data){
+			console.log('Raspberry Pi: ' + data.KerberosId);
+		});
 				
 		/* 
 		================
 		Local functions 
 		*/
 		
-		/// Emit all cranes
+		/// sendKerberosMessage
 		function sendKerberosMessage(){			
 			socket.emit('Clapp.Kerberos.Message', {Command : 'KerberosCommand', Values : 1});
+		}
+		
+		/// Emit Heartbeat request
+		function raspberryHeartbeat(){
+			socket.emit('youRConnected?');
 		}
 		
 		/* 
@@ -21,7 +34,7 @@ function initialize(io, globals){
 		Socket Intervals
 		*/
 		/// Emit every 5 seconds cranes
-		setInterval(sendKerberosMessage, 5000);
+		setInterval(raspberryHeartbeat, 5000);
 	
 		/* 
 		================
