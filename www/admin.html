@@ -46,8 +46,7 @@
         <div class="row">
             <nav class="col-xs-3 menu">
                 <ul id="hydra-menu">
-                    <li class="withripple" data-target="#about">Material Design for Bootstrap</li>
-                    <li class="withripple active" data-target="#getting-started">Getting Started<div class="ripple-container"></div></li>
+                    
                 </ul>
             </nav>
         </div>
@@ -87,7 +86,7 @@
         function createHydraMenu(data){
             var htmlHydras = '';
             $.each(data, function(index, value){
-                htmlHydras += '<li class="withripple" id="'+value.UUID+'" onclick="javascript: hydra_OnClick("'+value.UUID+'")">'+ value.Name +'</li>';
+                htmlHydras += '<li class="withripple" id="' + value.UUID + '" onclick="javascript: hydra_OnClick(\'' + value.UUID + '\')">' + value.Name +'</li>';
             });
             $("#hydra-menu").append(htmlHydras);
         }
@@ -95,6 +94,10 @@
         function cleanHydraMenu(){
             $("#hydra-menu").find('li').remove();
         }
+        
+        function hydra_OnClick(UUID){
+            $('#' + UUID).addClass('active');
+        };
         
         function kerberosMessageHub(data){
             var values = data.Values;
