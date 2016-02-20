@@ -77,16 +77,16 @@
         
         socket.on('Clapp.Kerberos.Settings', function(data){
             if(data != undefined && data != null){
-                //cleanHydraMenu();
+                cleanHydraMenu();
                 
                 // Putting all Hydras (Raspberry Pi)
-                createHydraMenu(data)
+                createHydraMenu(data.Hydras);
             }
         });
         
         function createHydraMenu(data){
             var htmlHydras = '';
-            $.each(data.Hydras, function(index, value){
+            $.each(data, function(index, value){
                 htmlHydras += '<li class="withripple" data-target="#about">'+ value +'</li>'
             });
             $("#hydra-menu").append(htmlHydras);
