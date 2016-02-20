@@ -40,7 +40,16 @@
           </div>
     </div>
     
-    
+    <div class="container-fluid main">
+        <div class="row">
+            <nav class="col-xs-3 menu">
+                <ul>
+                    <li class="withripple" data-target="#about">Material Design for Bootstrap</li>
+                    <li class="withripple active" data-target="#getting-started">Getting Started<div class="ripple-container"></div></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -55,11 +64,23 @@
         var socket = io('http://clapp.cloudapp.net:3000');
         socket.on('Welcome', function (data) {
             console.log(data);
+            
+            socket.emit('GetKerberosSettings');
         });
         
         socket.on('Clapp.Kerberos.Message', function(data){
             console.log('Kerberos catched: Clapp.Kerberos.Message');
             kerberosMessageHub(data);
+        });
+        
+        socket.on('Clapp.Kerberos.Settings', function(data){
+            if(data != undefined && data != null){
+                // Putting all Hydras (Raspberry Pi)
+                var htmlHydras = '';
+                $.each(data.Hydras, function(index, value){
+                    
+                });
+            }
         })
         
         function kerberosMessageHub(data){

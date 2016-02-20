@@ -16,6 +16,10 @@ function initialize(io, globals){
 			console.log('Raspberry Pi: ' + data.KerberosId);
 		});
         
+        socket.on('GetKerberosSettings', function(data){
+            socket.emit('Clapp.Kerberos.Settings', {Hydras: globals.Hydras});
+        });
+        
         socket.on('Clapp.Hydra.Information', function(data){
             console.log('Socket catched: Clapp.Hydra.Information');
             globals.Hydras.push(data.UUID);
