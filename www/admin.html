@@ -45,7 +45,7 @@
     <div class="container-fluid main">
         <div class="row">
             <nav class="col-xs-3 menu">
-                <ul>
+                <ul id="hydra-menu">
                     <li class="withripple" data-target="#about">Material Design for Bootstrap</li>
                     <li class="withripple active" data-target="#getting-started">Getting Started<div class="ripple-container"></div></li>
                 </ul>
@@ -78,12 +78,17 @@
         socket.on('Clapp.Kerberos.Settings', function(data){
             if(data != undefined && data != null){
                 // Putting all Hydras (Raspberry Pi)
-                var htmlHydras = '';
-                $.each(data.Hydras, function(index, value){
-                    
-                });
+                createHydraMenu(data)
             }
-        })
+        });
+        
+        function createHydraMenu(data){
+            var htmlHydras = '';
+            $.each(data.Hydras, function(index, value){
+                htmlHydras += '<li class="withripple" data-target="#about">'+ value +'</li>'
+            });
+            $("#hydra-menu").append(htmlHydras);
+        }
         
         function kerberosMessageHub(data){
             var values = data.Values;
