@@ -58,6 +58,7 @@
         });
         
         socket.on('Clapp.Kerberos.Message', function(data){
+            console.log('Kerberos catched: Clapp.Kerberos.Message');
             kerberosMessageHub(data);
         })
         
