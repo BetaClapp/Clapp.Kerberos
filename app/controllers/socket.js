@@ -17,6 +17,7 @@ function initialize(io, globals){
 		});
         
         socket.on('Clapp.Hydra.Information', function(data){
+            globals.Hydras.push(data);
             socket.emit('Clapp.Kerberos.Message', {Command : 'HydrasConnected', Hydras: globals.Hydras});
         });
 				
