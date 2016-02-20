@@ -19,7 +19,7 @@ function initialize(io, globals){
         socket.on('Clapp.Hydra.Information', function(data){
             console.log('Socket catched: Clapp.Hydra.Information');
             globals.Hydras.push(data.UUID);
-            io.sockets.emit('Clapp.Kerberos.Message', {Command : 'HydrasConnected', Values : {Hydras: globals.Hydras});
+            io.sockets.emit('Clapp.Kerberos.Message', {Command : 'HydrasConnected', Values : {Hydras: globals.Hydras}});
         });
 				
 		/* 
