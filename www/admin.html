@@ -15,8 +15,8 @@
     <link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
     <!-- Bootstrap Material Design -->
-    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css">
-    <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-material-design/dist/css/ripples.min.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-material-design/dist/css/bootstrap-material-design.css">
+    <link rel="stylesheet" type="text/css" href="bootstrap-material-design/dist/css/ripples.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -46,13 +46,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="../node_modules/bootstrap-material-design/dist/js/material.min.js""></script>
-    <script src="../node_modules/bootstrap-material-design/dist/js/ripples.min.js""></script>
+    <script src="bootstrap-material-design/dist/js/material.min.js""></script>
+    <script src="bootstrap-material-design/dist/js/ripples.min.js""></script>
     
     <script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
     
     <script>
-        var socket = io('http://localhost:3000');
+        var socket = io('http://clapp.cloudapp.net:3000');
         socket.on('Welcome', function (data) {
             console.log(data);
         });
