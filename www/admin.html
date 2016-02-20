@@ -65,6 +65,7 @@
         function kerberosMessageHub(data){
             var values = data.Values;
             var command = data.Command;
+            console.log(values)
             switch(command) {
                 case "HydrasConnected":
                     console.log(values.Hydras);
