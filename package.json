@@ -1,5 +1,5 @@
 {
-  "name": "Kerbereos",
+  "name": "Clapp.Kerberos",
   "version": "1.0.0",
   "description": "http://betaclapp.github.io//",
   "license": "GNU GENERAL PUBLIC LICENSE",
@@ -16,6 +16,7 @@
     "jsonwebtoken": "latest",
     "socket.io": "latest",
     "is-online": "latest",
-    "ejs": "latest"
+    "ejs": "latest",
+    "bootstrap-material-design": "latest"
   }
 }
