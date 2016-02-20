@@ -1,3 +1,3 @@
 var Hydras = [];
 
-exports.Hydras;
+exports.Hydras = Hydras;
