@@ -87,7 +87,7 @@
         function createHydraMenu(data){
             var htmlHydras = '';
             $.each(data, function(index, value){
-                htmlHydras += '<li class="withripple" data-target="#about">'+ value +'</li>'
+                htmlHydras += '<li class="withripple" id="'+value.UUID+'" onclick="javascript: hydra_OnClick("'+value.UUID+'")">'+ value.Name +'</li>';
             });
             $("#hydra-menu").append(htmlHydras);
         }
