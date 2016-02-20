@@ -77,7 +77,7 @@
         
         socket.on('Clapp.Kerberos.Settings', function(data){
             if(data != undefined && data != null){
-                cleanHydraMenu();
+                //cleanHydraMenu();
                 
                 // Putting all Hydras (Raspberry Pi)
                 createHydraMenu(data)
@@ -93,7 +93,7 @@
         }
         
         function cleanHydraMenu(){
-            $("#hydra-menu>li").remove();
+            $("#hydra-menu").find('li').remove();
         }
         
         function kerberosMessageHub(data){
