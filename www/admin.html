@@ -56,6 +56,20 @@
         socket.on('Welcome', function (data) {
             console.log(data);
         });
+        
+        socket.on('Clapp.Kerberos.Message', function(data){
+            kerberosMessageHub(data);
+        })
+        
+        function kerberosMessageHub(data){
+            var values = data.Values;
+            var command = data.Command;
+            switch(command) {
+                case "HydrasConnected":
+                    console.log(values.Hydras);
+                    break;
+            }
+        }
     </script>
     
   </body>

@@ -5,6 +5,8 @@ function initialize(io, globals){
 	
 		/// Welcome to the new client
 		socket.emit('Welcome', {Message: 'Welcome to Clapp.Kerberos', SocketId : socket.id});
+        
+        socket.emit('Clapp.Kerberos.Message', {Command : 'GiveYourHydraInformation'});
 		
 		/*
 		================
@@ -13,6 +15,10 @@ function initialize(io, globals){
 		socket.on('ImConnected', function(data){
 			console.log('Raspberry Pi: ' + data.KerberosId);
 		});
+        
+        socket.on('Clapp.Hydra.Information', function(data){
+            socket.emit('Clapp.Kerberos.Message', {Command : 'HydrasConnected', Hydras: globals.Hydras});
+        });
 				
 		/* 
 		================
