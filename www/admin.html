@@ -50,18 +50,23 @@
                 </ul>
             </nav>
             
-            <div class="pages col-xs-9" style="height:500px;">
+            <div class="pages col-xs-9" style="overflow-x: hidden;">
                 <div class="row">
                     <div class="col-xs-10">
                         <div class="well page" id="hydra-detail">
                             <h2 id="name"></h2>
                             <h3 id="uuid"></h3>
+                            <canvas id="beacons-map" width="700" height="400" style="border:1px dashed #828282;"></canvas>
                         </div>
                     </div>
                 </div>
             </div>
             
         </div>
+    </div>
+    
+    <div style="display:none;">
+        <img id="compass" src="img/compass.png">
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -117,10 +122,38 @@
         function setHydraInformation(data){
             $("#hydra-detail>#name").text(data.HydraInformation.Name);
             $("#hydra-detail>#uuid").text(data.HydraInformation.UUID);
+            drawRoom(data.Beacons);
         }
         
         function selectFirstOneHydra(){
             $("#hydra-menu>li:eq(0)").click();
+        }
+        
+        function drawRoom(Beacons){
+            var compassImage = document.getElementById("compass");
+            var canvas = document.getElementById("beacons-map");
+            var context = canvas.getContext('2d');
+            
+            polygon(context, 350, 200, 200, Beacons.length, (45 * Math.PI / 180));
+            
+            context.stroke();
+            context.drawImage(compassImage, -170, 220);
+        }
+        
+        function polygon(ctx, x, y, radius, sides, rotateAngle) {
+            if (sides < 3) return;
+            var a = (Math.PI * 2)/sides;
+            ctx.strokeStyle = '#afafaf';
+            ctx.beginPath();
+            ctx.translate(x,y);
+            ctx.rotate(rotateAngle);
+            ctx.moveTo(radius,0);
+            for (var i = 1; i < sides; i++) {
+                ctx.lineTo(radius*Math.cos(a*i),radius*Math.sin(a*i));
+            }
+            ctx.closePath();
+            ctx.fillStyle = "#f9f9f9";
+            ctx.fill();
         }
         
         function kerberosMessageHub(data){
