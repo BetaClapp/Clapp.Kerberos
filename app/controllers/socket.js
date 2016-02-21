@@ -49,8 +49,7 @@ function initialize(io, globals){
             switch(command) {
                 case "ThisIsMyOwnHydraInformation":
                     var information = {
-                        Name : values.Name,
-                        UUID : values.UUID,
+                        HydraInformation : values.HydraInformation,
                         Beacons : values.Beacons
                     }
                     io.sockets.emit('Clapp.Kerberos.Message', {Command : 'HydraInformationByUUID', Values : information});
