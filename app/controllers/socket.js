@@ -20,16 +20,43 @@ function initialize(io, globals){
             socket.emit('Clapp.Kerberos.Settings', {Hydras: globals.Hydras});
         });
         
+        socket.on('GetHydraInformation', function(data){
+            if (data!= undefined && data != null) {
+                io.sockets.emit('Clapp.Kerberos.Message', {Command : 'GiveYourAllInformation', Values : { UUID : data.UUID}});
+            }
+        });
+        
         socket.on('Clapp.Hydra.Information', function(data){
             console.log('Socket catched: Clapp.Hydra.Information');
             globals.Hydras.push(data.HydraSettings);
             io.sockets.emit('Clapp.Kerberos.Message', {Command : 'HydrasConnected', Values : {Hydras: globals.Hydras}});
         });
+        
+        socket.on('Clapp.Hydra.Message', function(data){
+            if(data != undefined && data != null)
+                hydraMessagesHub(data);
+        })
 				
 		/* 
 		================
 		Local functions 
 		*/
+        
+        function hydraMessagesHub(data){
+            var command = data.Command;
+            var values = data.Values;
+            
+            switch(command) {
+                case "ThisIsMyOwnHydraInformation":
+                    var information = {
+                        Name : values.Name,
+                        UUID : values.UUID,
+                        Beacons : values.Beacons
+                    }
+                    io.sockets.emit('Clapp.Kerberos.Message', {Command : 'HydraInformationByUUID', Values : information});
+                    break;
+            }
+        }
 		
 		/// sendKerberosMessage
 		function sendKerberosMessage(){			

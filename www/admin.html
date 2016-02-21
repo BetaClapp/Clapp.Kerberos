@@ -49,6 +49,18 @@
                     
                 </ul>
             </nav>
+            
+            <div class="pages col-xs-9" style="height:500px;">
+                <div class="row">
+                    <div class="col-xs-10">
+                        <div class="well page" id="hydra-detail">
+                            <h2 id="name">Hydra tal</h2>
+                            <h3 id="uuid">otro texto</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </div>
 
@@ -97,7 +109,13 @@
         
         function hydra_OnClick(UUID){
             $('#' + UUID).addClass('active');
+            socket.emit('GetHydraInformation', {UUID: UUID});
         };
+        
+        function setHydraInformation(data){
+            $("#hydra-detail>#name").text(data.Name);
+            $("#hydra-detail>#uuid").text(data.UUID);
+        }
         
         function kerberosMessageHub(data){
             var values = data.Values;
@@ -107,6 +125,9 @@
                 case "HydrasConnected":
                     cleanHydraMenu();
                     createHydraMenu(values.Hydras);
+                    break;
+                case "HydraInformationByUUID":
+                    setHydraInformation(values);
                     break;
             }
         }

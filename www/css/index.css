@@ -81,10 +81,11 @@
 }
 
 .page {
-    transform: translateY(1080px);
-    transition: transform 0 linear;
+    /*transform: translateY(1080px);
+    
     display: none;
-    opacity: 0;
+    opacity: 0;*/
+    transition: transform 0 linear;
     font-size: 16px;
 }
 
